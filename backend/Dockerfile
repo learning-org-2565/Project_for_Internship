@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Install build dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends gcc
+RUN apt-get update && apt-get install -y --no-install-recommends gcc libffi-dev
 
 # Set the working directory
 WORKDIR /app
@@ -25,7 +25,7 @@ ENV PYTHONUNBUFFERED 1
 # Set the working directory
 WORKDIR /app
 
-# Copy dependencies from the builder stage
+# Install runtime dependencies
 COPY --from=builder /wheels /wheels
 RUN pip install --no-cache-dir --no-index --find-links=/wheels /wheels/*
 
@@ -35,5 +35,5 @@ COPY app.py /app/
 # Expose the Flask application port
 EXPOSE 5000
 
-# Define the command to run the application
+# Command to run the application
 CMD ["python", "app.py"]
