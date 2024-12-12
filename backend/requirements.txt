@@ -14,7 +14,10 @@ Six==1.16.0
 # For Python 3.9 compatibility
 importlib-metadata==3.10.0
 click==8.1.3
-zipp==3.15.0  # This is the troublemaker
+zipp==3.15.0
+
+# Additional dependencies for pymongo
+dnspython==2.3.0
 
 # Additional dependency for Jinja2
 MarkupSafe==2.1.2
