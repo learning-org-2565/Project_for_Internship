@@ -14,7 +14,7 @@ WORKDIR /app
 # Copy requirements.txt
 COPY requirements.txt /app/
 
-# Build dependencies into wheels
+# Prebuild dependencies into wheels
 RUN pip wheel --no-cache-dir --no-deps --wheel-dir /wheels -r requirements.txt
 
 # Stage 2: Runtime Stage
@@ -37,5 +37,5 @@ COPY app.py /app/
 # Expose Flask port
 EXPOSE 5000
 
-# Command to run the app
+# Command to run the application
 CMD ["python", "app.py"]
